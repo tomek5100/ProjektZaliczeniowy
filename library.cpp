@@ -68,7 +68,7 @@ Polynomial Polynomial::Add(Polynomial &other)
             //jesli other.arr ma mniejszy stopien to odejmuje tylko wspolczynniki do rozmiaru other.arrsize
             result.coefficient_arr[i] = coefficient_arr[i] + other.coefficient_arr[i];
         }
-        for (int i = 0; i < other.arr_size; i++)
+        for (int i = other.arr_size; i < arr_size; i++)
         {
             //pozosotale wspolczynniki przepisuje
             result.coefficient_arr[i] = coefficient_arr[i];
@@ -80,11 +80,12 @@ Polynomial Polynomial::Add(Polynomial &other)
         {
             result.coefficient_arr[i] = coefficient_arr[i] + other.coefficient_arr[i];
         }
-        for (int i = 0; i < arr_size; i++)
+        for (int i = arr_size; i < other.arr_size; i++)
         {
             result.coefficient_arr[i] = other.coefficient_arr[i];
         }
     }
+    result.displayPolynomial();
     return result;
 }
 
@@ -170,9 +171,9 @@ double Polynomial::Horner(double x)
 //wyswietla wielomian
 void Polynomial::displayPolynomial()
 {
-    for (int i = arr_size - 1; i >= 0; i--)
+    for (int i = arr_size - 1; i > 0; i--)
     {
         cout << "(" << coefficient_arr[i] << "x^" << i << ") + ";
     }
-    cout << endl;
+    cout << coefficient_arr[0] << endl;
 }
