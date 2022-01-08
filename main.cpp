@@ -30,6 +30,11 @@ int main()
     Polynomial poly2(array2, wspolczynnik2 + 1); 
     poly2.displayPolynomial();
 
+    // cout << "wielomian1 + wielomian2: ";
+    // Polynomial result1;
+    // result1 = poly1.Add(poly2);
+    // result1.displayPolynomial();
+
 
     return 0;
 }

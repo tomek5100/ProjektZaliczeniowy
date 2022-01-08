@@ -170,7 +170,7 @@ double Polynomial::Horner(double x)
 //wyswietla wielomian
 void Polynomial::displayPolynomial()
 {
-    for (int i = arr_size; i >= 0; i--)
+    for (int i = arr_size - 1; i >= 0; i--)
     {
         cout << "(" << coefficient_arr[i] << "x^" << i << ") + ";
     }
