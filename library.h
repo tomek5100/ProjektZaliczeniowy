@@ -28,13 +28,13 @@ public:
     ~Polynomial();
 
     //dodaje jeden wielomian do drugiego
-    Polynomial Add(Polynomial &other);
+    void Add(Polynomial &other);
 
     //odejmuje wielomiany
-    Polynomial Substract(Polynomial &other);
+    void Substract(Polynomial &other);
 
     //mnozenie wielomanow
-    Polynomial Multiply(Polynomial &other);
+    void Multiply(Polynomial &other);
 
     //zwraca stopien wielomanu
     int degree();

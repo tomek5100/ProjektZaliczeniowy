@@ -54,7 +54,7 @@ Polynomial::~Polynomial()
 }
 
 //dodaje jeden wielomian do drugiego
-Polynomial Polynomial::Add(Polynomial &other)
+void Polynomial::Add(Polynomial &other)
 {
     //sprawdzamy ktory wielomian ma wiekszy stopien
     int resultSize = (arr_size >= other.arr_size) ? arr_size : other.arr_size;
@@ -68,7 +68,7 @@ Polynomial Polynomial::Add(Polynomial &other)
             //jesli other.arr ma mniejszy stopien to odejmuje tylko wspolczynniki do rozmiaru other.arrsize
             result.coefficient_arr[i] = coefficient_arr[i] + other.coefficient_arr[i];
         }
-        for (int i = 0; i < other.arr_size; i++)
+        for (int i = other.arr_size; i < arr_size; i++)
         {
             //pozosotale wspolczynniki przepisuje
             result.coefficient_arr[i] = coefficient_arr[i];
@@ -80,16 +80,16 @@ Polynomial Polynomial::Add(Polynomial &other)
         {
             result.coefficient_arr[i] = coefficient_arr[i] + other.coefficient_arr[i];
         }
-        for (int i = 0; i < arr_size; i++)
+        for (int i = arr_size; i < other.arr_size; i++)
         {
             result.coefficient_arr[i] = other.coefficient_arr[i];
         }
     }
-    return result;
+    result.displayPolynomial();
 }
 
 //odejmuje wielomiany
-Polynomial Polynomial::Substract(Polynomial &other)
+void Polynomial::Substract(Polynomial &other)
 {
     //dziala tak samo jak dodawanie, lecz zamieniamy + na - w dwoch miejscach
     //sprawdzamy ktory wielomian ma wiekszy stopien
@@ -104,7 +104,7 @@ Polynomial Polynomial::Substract(Polynomial &other)
             //jesli other.arr ma mniejszy stopien to odejmuje tylko wspolczynniki do rozmiaru other.arrsize
             result.coefficient_arr[i] = coefficient_arr[i] - other.coefficient_arr[i];
         }
-        for (int i = 0; i < other.arr_size; i++)
+        for (int i = other.arr_size; i < arr_size; i++)
         {
             //pozosotale wspolczynniki przepisuje
             result.coefficient_arr[i] = coefficient_arr[i];
@@ -116,16 +116,16 @@ Polynomial Polynomial::Substract(Polynomial &other)
         {
             result.coefficient_arr[i] = coefficient_arr[i] - other.coefficient_arr[i];
         }
-        for (int i = 0; i < arr_size; i++)
+        for (int i = arr_size; i < other.arr_size; i++)
         {
             result.coefficient_arr[i] = other.coefficient_arr[i];
         }
     }
-    return result;
+    result.displayPolynomial();
 }
 
 //mnozenie wielomanow
-Polynomial Polynomial::Multiply(Polynomial &other)
+void Polynomial::Multiply(Polynomial &other)
 {
     //najwyzsza potega wielomianu to suma rozmiaru dwoch tablic - 2(bo wspolczynnik x^0)
     int result_degree = arr_size + other.arr_size - 2;
@@ -141,7 +141,7 @@ Polynomial Polynomial::Multiply(Polynomial &other)
             result.coefficient_arr[i + j] += (coefficient_arr[i] * other.coefficient_arr[j]);
         }
     }
-    return result;
+    result.displayPolynomial();
 }
 
 //zwraca stopien wielomanu
@@ -170,9 +170,9 @@ double Polynomial::Horner(double x)
 //wyswietla wielomian
 void Polynomial::displayPolynomial()
 {
-    for (int i = arr_size - 1; i >= 0; i--)
+    for (int i = arr_size - 1; i > 0; i--)
     {
         cout << "(" << coefficient_arr[i] << "x^" << i << ") + ";
     }
-    cout << endl;
+    cout << coefficient_arr[0] << endl;
 }
