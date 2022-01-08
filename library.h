@@ -39,10 +39,11 @@ public:
     //zwraca stopien wielomanu
     int degree();
 
-    //jeszcze horner
+    //obliczanie wartosci wielomianu metoda Hornera
+    double Horner(double value);
 
     //wyswietla wielomian
-    void displayPoly();
+    void displayPolynomial();
 };
 
 #endif
