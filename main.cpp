@@ -17,6 +17,7 @@ int main()
     }
     //tworzymy pierwszy obiekt, wywolujemy kontruktor inicjalizujacy wartosci
     Polynomial poly1(array1, stopien1 + 1);
+    cout << "Wielomian1: ";
     poly1.displayPolynomial();
 
     cout << "Podaj stopien drugiego wielomianu:\n";
@@ -28,16 +29,17 @@ int main()
         cin >> array2[i];
     }
     Polynomial poly2(array2, stopien2 + 1);
+    cout << "Wielomian2: ";
     poly2.displayPolynomial();
 
     cout << "wielomian1 + wielomian2: ";
-    poly1.Add(poly2);
+    poly1.Add(poly2).displayPolynomial();
 
     cout << "wielomian1 - wielomian2: ";
-    poly1.Substract(poly2);
+    poly1.Substract(poly2).displayPolynomial();
 
     cout << "wielomian1 * wielomian2: ";
-    poly1.Multiply(poly2);
+    poly1.Multiply(poly2).displayPolynomial();
 
     int x1, x2;
     cout << "Podaj punkt x w ktorym obliczymy wartosc wielomianu1: " << endl;

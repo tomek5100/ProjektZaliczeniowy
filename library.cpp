@@ -4,12 +4,12 @@
 using namespace std;
 
 //konstruktor domyslny, tworzy pusty wielomian
-Polynomial::Polynomial()
-{
-    arr_size = 1;
-    coefficient_arr = new double[1];
-    coefficient_arr[0] = 0;
-}
+// Polynomial::Polynomial()
+// {
+//     arr_size = 1;
+//     coefficient_arr = new double[1];
+//     coefficient_arr[0] = 0;
+// }
 
 //tworzy wielomian zainicjalizowany na zero
 Polynomial::Polynomial(int degree)
@@ -54,7 +54,7 @@ Polynomial::~Polynomial()
 }
 
 //dodaje jeden wielomian do drugiego
-void Polynomial::Add(Polynomial &other)
+Polynomial Polynomial::Add(Polynomial &other)
 {
     //sprawdzamy ktory wielomian ma wiekszy stopien
     int resultSize = (arr_size >= other.arr_size) ? arr_size : other.arr_size;
@@ -85,11 +85,11 @@ void Polynomial::Add(Polynomial &other)
             result.coefficient_arr[i] = other.coefficient_arr[i];
         }
     }
-    result.displayPolynomial();
+    return result;
 }
 
 //odejmuje wielomiany
-void Polynomial::Substract(Polynomial &other)
+Polynomial Polynomial::Substract(Polynomial &other)
 {
     //dziala tak samo jak dodawanie, lecz zamieniamy + na - w dwoch miejscach
     //sprawdzamy ktory wielomian ma wiekszy stopien
@@ -121,11 +121,11 @@ void Polynomial::Substract(Polynomial &other)
             result.coefficient_arr[i] = other.coefficient_arr[i];
         }
     }
-    result.displayPolynomial();
+    return result;
 }
 
 //mnozenie wielomanow
-void Polynomial::Multiply(Polynomial &other)
+Polynomial Polynomial::Multiply(Polynomial &other)
 {
     //najwyzsza potega wielomianu to suma rozmiaru dwoch tablic - 2(bo wspolczynnik x^0)
     int result_degree = arr_size + other.arr_size - 2;
@@ -141,7 +141,7 @@ void Polynomial::Multiply(Polynomial &other)
             result.coefficient_arr[i + j] += (coefficient_arr[i] * other.coefficient_arr[j]);
         }
     }
-    result.displayPolynomial();
+    return result;
 }
 
 //zwraca stopien wielomanu
