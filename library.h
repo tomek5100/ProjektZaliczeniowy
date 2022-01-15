@@ -5,26 +5,19 @@ class Polynomial
 {
 private:
     double *coefficient_arr;
-    int arr_size; //jest o jeden wieksza od stopnia wielomianu
-    //rozmiar tablicy musi byc wiekszy o 1 od stopnia wielomianu
-    //motywacja
+    int arr_size; //rozmiar tablicy jest o jeden wiekszy od stopnia wielomianu
+    //przyklad:
     //int stopien = 2
     //x^2 + x + c --> trzy wspolczynniki
 
 public:
-    //tworzy pusty wielomian
-    Polynomial();
-
-    //tworzy wielomian zainicjalizowany na zero
+    //konstruktor - tworzy wielomian zainicjalizowany na zero
     Polynomial(int degree);
 
-    //tworzy wielomian i inicjalizuje wartosci
+    //konstruktor - tworzy wielomian i inicjalizuje wartosci
     Polynomial(double *arr, int coefficient);
 
-    //konstruktor kopiujacy
-    Polynomial(Polynomial &other);
-
-    //destruktor
+    //destruktor 
     ~Polynomial();
 
     //dodaje jeden wielomian do drugiego
