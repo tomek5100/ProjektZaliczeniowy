@@ -118,7 +118,7 @@ Polynomial Polynomial::Substract(Polynomial &other)
         }
         for (int i = arr_size; i < other.arr_size; i++)
         {
-            result.coefficient_arr[i] = other.coefficient_arr[i];
+            result.coefficient_arr[i] = -(other.coefficient_arr[i]);
         }
     }
     return result;
@@ -154,14 +154,15 @@ int Polynomial::degree()
 double Polynomial::Horner(double x)
 {
     double result = 0;
-    if (arr_size == 1)
+    if (arr_size == 1){
         result = coefficient_arr[0];
+    }
     else
     {
         result = coefficient_arr[arr_size - 1];
         for (int i = arr_size - 2; i >= 0; i--)
         {
-            result *= x + coefficient_arr[i];
+            result = result * x + coefficient_arr[i];
         }
     }
     return result;
@@ -174,5 +175,5 @@ void Polynomial::displayPolynomial()
     {
         cout << "(" << coefficient_arr[i] << "x^" << i << ") + ";
     }
-    cout << coefficient_arr[0] << endl;
+    cout << "(" << coefficient_arr[0] << ")" << endl;
 }
